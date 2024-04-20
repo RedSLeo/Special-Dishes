@@ -1,0 +1,8 @@
+API -> https://www.themealdb.com/api.php
+
+	- Search meanl by name
+	- List all means by first letter
+	- List all meal categories(?)
+	- 
+
+API #2 -> https://spoonacular.com/food-api/docs#Search-Recipes-Complex

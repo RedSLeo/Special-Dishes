@@ -1,0 +1,6 @@
+The Recipe app has an API coming from a site TheMealDB(https://www.themealdb.com/) that allows us to utilize every available dish it has with API method that we plan to use such as searching meal by name, list the meals by first letter, list all meal categories, and filtering by area, for now we are going to list all of the categorized meals. From the wireframe provided we plan on provided the user a choice of the type of dish such as vegetarian, chicken, beef, or pork(so far).
+
+After the user selects what kind of dish they would like they would click on 'Search Option' button and they will be given a list of meals based on the type of dish they are looking for. For instance if a user were to click on Beef, then they will only get beef themed dishes like Beef Lo Mein or Moussaka. Afterwards out of all the available options the user would click on Beef Lo Mein to view the ingredients used to make it and then they would click on Beef Lo Mein once again(still deciding this feature) to view the steps on how to prepare and cook Beef Lo Mein.
+
+The main features that the application will have is the selection of dish categories and the selection of meals. Since there is a lot to do between two people we decided to break it up into much smaller task such as creating a list for the meals and categories, and create buttons in the GUI.
+

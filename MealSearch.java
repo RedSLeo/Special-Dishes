@@ -2,7 +2,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import com.google.gson.*;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 // Simple test to try out GSON & Guide
 
@@ -35,13 +36,15 @@ public class MealSearch {
                 response.append(line);
             }
             reader.close();
-
-            /*
-             * Reads the response from the connection and stores it as a 'String' and then prints out the JSON response to the console
-             */
+   
+            // Stores our web API data into a String variable.
             String jsonResponse = response.toString();
+     
+           /*
+             * Reads the response from the connection and stores it as a 'String' and then prints out the JSON response to the console
+             */   
             System.out.println(jsonResponse);
-
+ 
             // Not being used (Figure this part out later, even though it works without it)
             Gson gson = new Gson();
             JsonObject json = gson.fromJson(jsonResponse, JsonObject.class);
@@ -62,7 +65,7 @@ public class MealSearch {
             }
             
             // Process the JSON object here
-
+            System.out.println(json);
             conn.disconnect();
         } catch (Exception e) {
             e.printStackTrace();

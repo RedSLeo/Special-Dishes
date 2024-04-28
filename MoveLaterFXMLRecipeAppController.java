@@ -3,6 +3,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import java.util.prefs.Preferences;
 
 public class MoveLaterFXMLRecipeAppController
 {
@@ -59,15 +60,28 @@ public class MoveLaterFXMLRecipeAppController
    @FXML
    private Button searchButton;
    
+   /** A enum that keeps track of the user's choice for type of meal. Not sure if I'm going to keep this, depends on if we hardcode the buttons. */
+   private enum MealChoice { VEGETARIAN, CHICKEN, BEEF, PORK };
+   private MealChoice mealChoice;
+   
+   protected static final String MEAL_TYPE = "meal_type_key";
+   
+   
+   
    /**
       This method runs when the user selects Beef as their dish category
       of choice. 
    */
    
    @FXML
-   void beefChoice(ActionEvent event) 
+   protected void beefChoice() 
    {
-      
+      this.mealChoice = MealChoice.BEEF;
+      button1.setText("Beef Sunday Roast");
+      button2.setText("Beef Lo Mein");
+      button3.setText("Moussaka");
+      button4.setText("Massaman Beef Curry");
+      button5.setText("Mulukhiyah");
    }
 
    
@@ -76,9 +90,9 @@ public class MoveLaterFXMLRecipeAppController
       category of choice. 
    */   
    @FXML
-   void chickChoice(ActionEvent event) 
+   protected void chickChoice() 
    {
-   
+      this.mealChoice = MealChoice.CHICKEN;
    }
    
    /**
@@ -86,16 +100,52 @@ public class MoveLaterFXMLRecipeAppController
       of choice. 
    */      
    @FXML
-   void porkChoice(ActionEvent event) 
+   protected void porkChoice() 
    {
- 
+      this.mealChoice = MealChoice.PORK;
+     
+   }   
+   @FXML
+   
    /**
       This method runs when the user selects Vegetarian as their dish 
       category of choice. 
-   */   
-   }   
+   */ 
+   protected void vegChoice() 
+   {
+      this.mealChoice = MealChoice.VEGETARIAN;
+   }
+   
+   /** 
+      This method runs when the user clicks the first recipe displayed
+      on the left side. It updates the ingredients and recipe 
+      instructions displayed to that of the recipe that the user selected.
+   */
+   
    @FXML
-   void vegChoice(ActionEvent event) 
+   protected void displayChoice1(ActionEvent event) 
+   {
+   
+   }
+   
+   /** 
+      This method runs when the user clicks the first recipe displayed
+      on the left side. It updates the ingredients and recipe 
+      instructions displayed to that of the recipe that the user selected.
+   */
+   @FXML
+   protected void displayChoice2(ActionEvent event) 
+   {
+   
+   }
+   
+   /** 
+      This method runs when the user clicks the first recipe displayed
+      on the left side. It updates the ingredients and recipe 
+      instructions displayed to that of the recipe that the user selected.
+   */
+   @FXML
+   protected void displayChoice3(ActionEvent event) 
    {
    
    }
@@ -107,41 +157,7 @@ public class MoveLaterFXMLRecipeAppController
    */
    
    @FXML
-   void displayChoice1(ActionEvent event) 
-   {
-   
-   }
-   
-   /** 
-      This method runs when the user clicks the first recipe displayed
-      on the left side. It updates the ingredients and recipe 
-      instructions displayed to that of the recipe that the user selected.
-   */
-   @FXML
-   void displayChoice2(ActionEvent event) 
-   {
-   
-   }
-   
-   /** 
-      This method runs when the user clicks the first recipe displayed
-      on the left side. It updates the ingredients and recipe 
-      instructions displayed to that of the recipe that the user selected.
-   */
-   @FXML
-   void displayChoice3(ActionEvent event) 
-   {
-   
-   }
-   
-   /** 
-      This method runs when the user clicks the first recipe displayed
-      on the left side. It updates the ingredients and recipe 
-      instructions displayed to that of the recipe that the user selected.
-   */
-   
-   @FXML
-   void displayChoice4(ActionEvent event) 
+   protected void displayChoice4(ActionEvent event) 
    {
    
    }
@@ -153,16 +169,27 @@ public class MoveLaterFXMLRecipeAppController
    */
     
    @FXML
-   void displayChoice5(ActionEvent event) 
+   protected void displayChoice5(ActionEvent event) 
    {
    
    }
    
    
    @FXML
-   void updateChoice(ActionEvent event) 
+   protected void handleMealChoiceRadioActionButton(ActionEvent event) 
    {
-   
+      if(event.getSource() == beefButton)
+         beefChoice();
+      else if(event.getSource() == chickButton)
+         chickChoice();
+      else if(event.getSource() == vegButton)
+         vegChoice();
+      else if(event.getSource() == porkButton)
+         porkChoice();
+      
+      // Save new meal preference
+      Preferences p = Preferences.userNodeForPackage(MoveLaterFXMLRecipeAppController.class);
+      p.put(MEAL_TYPE, this.mealChoice.toString() );
    }
    
 

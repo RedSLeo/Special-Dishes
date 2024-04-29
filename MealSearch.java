@@ -3,11 +3,19 @@ import java.net.URL;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import com.google.gson.*;
+import javafx.application.Application;
+import javafx.stage.Stage;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.util.*;
 
 // Simple test to try out GSON & Guide
 
-public class MealSearch {
+public class MealSearch extends Application {
     public static void main(String[] args) {
+        launch(args);
         try {
             // This is the FIRST meal
             // mealName varirable is not being used
@@ -51,11 +59,11 @@ public class MealSearch {
             System.out.println((json.meals[0]).strCategory);
             System.out.println((json.meals[0]).strInstructions);
             // Access the "meals" array from the JSON object
-            JsonArray mealsArray = json.getAsJsonArray("meals");
+//            JsonArray mealsArray = json.getAsJsonArray("meals");
 
             // Loop through each meal in the array and only print the name and category
-            for (JsonElement mealElement : mealsArray) {
-                JsonObject mealObject = mealElement.getAsJsonObject();
+//            for (JsonElement mealElement : mealsArray) {
+/*               JsonObject mealObject = mealElement.getAsJsonObject();
                 String mealName = mealObject.get("strMeal").getAsString();
                 String mealCategory = mealObject.get("strCategory").getAsString();
                 String MealDescription = mealObject.get("strInstructions").getAsString();
@@ -75,13 +83,13 @@ public class MealSearch {
             URL url2 = new URL(apiURL2);
             HttpURLConnection conn2 = (HttpURLConnection) url2.openConnection();
             conn2.setRequestMethod("GET");
-
+*/
             /*
              * Verifies if redirection is needed because without it it would return as an HTML format and throw an error,
              * therefore to avoid that it goes ahead and retrieves the new URL from the response
              * headers and opens a connection to the new URL
              */
-            if (conn2.getResponseCode() == HttpURLConnection.HTTP_MOVED_PERM || conn2.getResponseCode() == HttpURLConnection.HTTP_MOVED_TEMP) {
+/*            if (conn2.getResponseCode() == HttpURLConnection.HTTP_MOVED_PERM || conn2.getResponseCode() == HttpURLConnection.HTTP_MOVED_TEMP) {
                 String newUrl2 = conn1.getHeaderField("Location");
                 conn2 = (HttpURLConnection) new URL(newUrl2).openConnection();
                 conn2.setRequestMethod("GET");
@@ -94,11 +102,11 @@ public class MealSearch {
                 response2.append(line2);
             }
             reader2.close();
-
+*/
             /*
              * Reads the response from the connection and stores it as a 'String' and then prints out the JSON response to the console
              */
-            String jsonResponse2 = response2.toString();
+/*            String jsonResponse2 = response2.toString();
             System.out.println("\n" + jsonResponse2);
 
             // Not being used (Figure this part out later, even though it works without it)
@@ -130,13 +138,13 @@ public class MealSearch {
             URL url3 = new URL(apiURL3);
             HttpURLConnection conn3 = (HttpURLConnection) url3.openConnection();
             conn3.setRequestMethod("GET");
-
+*/
             /*
              * Verifies if redirection is needed because without it it would return as an HTML format and throw an error,
              * therefore to avoid that it goes ahead and retrieves the new URL from the response
              * headers and opens a connection to the new URL
              */
-            if (conn3.getResponseCode() == HttpURLConnection.HTTP_MOVED_PERM || conn3.getResponseCode() == HttpURLConnection.HTTP_MOVED_TEMP) {
+/*            if (conn3.getResponseCode() == HttpURLConnection.HTTP_MOVED_PERM || conn3.getResponseCode() == HttpURLConnection.HTTP_MOVED_TEMP) {
                 String newUrl3 = conn1.getHeaderField("Location");
                 conn3 = (HttpURLConnection) new URL(newUrl3).openConnection();
                 conn3.setRequestMethod("GET");
@@ -149,19 +157,19 @@ public class MealSearch {
                 response3.append(line3);
             }
             reader3.close();
-
+*/
             /*
              * Reads the response from the connection and stores it as a 'String' and then prints out the JSON response to the console
              */
-            String jsonResponse3 = response3.toString();
+/*            String jsonResponse3 = response3.toString();
             System.out.println("\n" + jsonResponse3);
-
+*/
             // Not being used (Figure this part out later, even though it works without it)
-            Gson gson3 = new Gson();
-            JsonObject json3 = gson3.fromJson(jsonResponse3, JsonObject.class);
-            
+//            Gson gson3 = new Gson();
+ //           JsonObject json3 = gson3.fromJson(jsonResponse3, JsonObject.class);
+           
             // Access the "meals" array from the JSON object
-            JsonArray mealsArray3 = json3.getAsJsonArray("meals");
+/*            JsonArray mealsArray3 = json3.getAsJsonArray("meals");
 
             // Loop through each meal in the array and only print the name and category
             for (JsonElement mealElement : mealsArray3) {
@@ -185,13 +193,13 @@ public class MealSearch {
             URL url4 = new URL(apiURL4);
             HttpURLConnection conn4 = (HttpURLConnection) url4.openConnection();
             conn4.setRequestMethod("GET");
-
+*/
             /*
              * Verifies if redirection is needed because without it it would return as an HTML format and throw an error,
              * therefore to avoid that it goes ahead and retrieves the new URL from the response
              * headers and opens a connection to the new URL
              */
-            if (conn4.getResponseCode() == HttpURLConnection.HTTP_MOVED_PERM || conn4.getResponseCode() == HttpURLConnection.HTTP_MOVED_TEMP) {
+ /*           if (conn4.getResponseCode() == HttpURLConnection.HTTP_MOVED_PERM || conn4.getResponseCode() == HttpURLConnection.HTTP_MOVED_TEMP) {
                 String newUrl4 = conn1.getHeaderField("Location");
                 conn4 = (HttpURLConnection) new URL(newUrl4).openConnection();
                 conn4.setRequestMethod("GET");
@@ -204,22 +212,22 @@ public class MealSearch {
                 response4.append(line4);
             }
             reader4.close();
-
+*/
             /*
              * Reads the response from the connection and stores it as a 'String' and then prints out the JSON response to the console
              */
-            String jsonResponse4 = response4.toString();
+/*            String jsonResponse4 = response4.toString();
             System.out.println("\n" + jsonResponse4);
-
+*/
             // Not being used (Figure this part out later, even though it works without it)
-            Gson gson4 = new Gson();
+/*            Gson gson4 = new Gson();
             JsonObject json4 = gson4.fromJson(jsonResponse4, JsonObject.class);
-            
+ */           
             // Access the "meals" array from the JSON object
-            JsonArray mealsArray4 = json4.getAsJsonArray("meals");
-
+/*            JsonArray mealsArray4 = json4.getAsJsonArray("meals");
+*/
             // Loop through each meal in the array and only print the name and category
-            for (JsonElement mealElement : mealsArray4) {
+/*            for (JsonElement mealElement : mealsArray4) {
                 JsonObject mealObject = mealElement.getAsJsonObject();
                 String mealName = mealObject.get("strMeal").getAsString();
                 String mealCategory = mealObject.get("strCategory").getAsString();
@@ -231,22 +239,22 @@ public class MealSearch {
             }
 
             conn4.disconnect();
-            
+ */           
              // This is the FIFTH meal
             // mealName varirable is not being used
             // String mealName = "Honey Teriyaki Salmon";
-            String apiURL5 = "https://www.themealdb.com/api/json/v1/1/search.php?s=Thai%20Green%20Curry";
+/*            String apiURL5 = "https://www.themealdb.com/api/json/v1/1/search.php?s=Thai%20Green%20Curry";
 
             URL url5 = new URL(apiURL5);
             HttpURLConnection conn5 = (HttpURLConnection) url5.openConnection();
             conn5.setRequestMethod("GET");
-
+*/
             /*
              * Verifies if redirection is needed because without it it would return as an HTML format and throw an error,
              * therefore to avoid that it goes ahead and retrieves the new URL from the response
              * headers and opens a connection to the new URL
              */
-            if (conn5.getResponseCode() == HttpURLConnection.HTTP_MOVED_PERM || conn4.getResponseCode() == HttpURLConnection.HTTP_MOVED_TEMP) {
+/*            if (conn5.getResponseCode() == HttpURLConnection.HTTP_MOVED_PERM || conn4.getResponseCode() == HttpURLConnection.HTTP_MOVED_TEMP) {
                 String newUrl5 = conn1.getHeaderField("Location");
                 conn4 = (HttpURLConnection) new URL(newUrl5).openConnection();
                 conn4.setRequestMethod("GET");
@@ -259,22 +267,22 @@ public class MealSearch {
                 response5.append(line5);
             }
             reader5.close();
-
+*/
             /*
              * Reads the response from the connection and stores it as a 'String' and then prints out the JSON response to the console
              */
-            String jsonResponse5 = response5.toString();
-            System.out.println("\n" + jsonResponse5);
+//            String jsonResponse5 = response5.toString();
+//           System.out.println("\n" + jsonResponse5);
 
             // Not being used (Figure this part out later, even though it works without it)
-            Gson gson5 = new Gson();
-            JsonObject json5 = gson5.fromJson(jsonResponse5, JsonObject.class);
+ //           Gson gson5 = new Gson();
+ //           JsonObject json5 = gson5.fromJson(jsonResponse5, JsonObject.class);
             
             // Access the "meals" array from the JSON object
-            JsonArray mealsArray5 = json5.getAsJsonArray("meals");
+ //           JsonArray mealsArray5 = json5.getAsJsonArray("meals");
 
             // Loop through each meal in the array and only print the name and category
-            for (JsonElement mealElement : mealsArray5) {
+/*            for (JsonElement mealElement : mealsArray5) {
                 JsonObject mealObject = mealElement.getAsJsonObject();
                 String mealName = mealObject.get("strMeal").getAsString();
                 String mealCategory = mealObject.get("strCategory").getAsString();
@@ -287,11 +295,26 @@ public class MealSearch {
 
             conn5.disconnect();
 
-
+*/
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
+    public void start(Stage stage) throws Exception
+   {
+      // Load the GUI from FXML built in Scene Builder
+      Parent root = FXMLLoader.load(getClass().getResource("RecipeAppView.fxml"));    
+      Scene scene = new Scene(root);      
+      stage.setTitle("Recipes App!");
+      stage.setScene(scene);
+      stage.show();
+   }
+   
+   @Override
+   public void stop() {
+      System.out.println("Stop is called in Application class");
+   }
+
 }

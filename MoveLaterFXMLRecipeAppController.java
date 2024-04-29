@@ -7,6 +7,7 @@ import java.util.prefs.Preferences;
 
 public class MoveLaterFXMLRecipeAppController
 {
+   //private HttpClient client;
    
    @FXML
    /** The first recipe button. */
@@ -93,7 +94,12 @@ public class MoveLaterFXMLRecipeAppController
    protected void chickChoice() 
    {
       this.mealChoice = MealChoice.CHICKEN;
-      //MealSearch.mealsArray.
+      button1.setText("15-minute chicken & halloumi burgers");
+      button2.setText("Ayam Percik");
+      button3.setText("Brown Stew Chicken");
+      button4.setText("Chick-Fil-A Sandwich");
+      button5.setText("Chicken & mushroom Hotpot");
+      
    }
    
    /**
@@ -104,7 +110,11 @@ public class MoveLaterFXMLRecipeAppController
    protected void porkChoice() 
    {
       this.mealChoice = MealChoice.PORK;  
-     
+      button1.setText("BBQ Pork Sloppy Joes");
+      button2.setText("Bigos (Hunters Stew)");
+      button3.setText("Boxty Breakfast");
+      button4.setText("Coddled pork with cider");
+      button5.setText("Crispy Sausages and Greens");
    }   
    @FXML
    
@@ -115,6 +125,11 @@ public class MoveLaterFXMLRecipeAppController
    protected void vegChoice() 
    {
       this.mealChoice = MealChoice.VEGETARIAN;
+      button1.setText("Baingan Bharta");
+      button2.setText("Beetroot Soup (Borscht)");
+      button3.setText("Cabbage Soup (Shchi)");
+      button4.setText("Chickpea Fajitas");
+      button5.setText("Crispy Eggplant");
    }
    
    /** 
@@ -179,13 +194,13 @@ public class MoveLaterFXMLRecipeAppController
    @FXML
    protected void handleMealChoiceRadioActionButton(ActionEvent event) 
    {
+      if(event.getSource() == chickButton)
+         chickChoice();
       if(event.getSource() == beefButton)
          beefChoice();
-      else if(event.getSource() == chickButton)
-         chickChoice();
-      else if(event.getSource() == vegButton)
+      if(event.getSource() == vegButton)
          vegChoice();
-      else if(event.getSource() == porkButton)
+      if(event.getSource() == porkButton)
          porkChoice();
       
       // Save new meal preference
@@ -193,5 +208,9 @@ public class MoveLaterFXMLRecipeAppController
       p.put(MEAL_TYPE, this.mealChoice.toString() );
    }
    
+   protected void updateChoice()
+   {
+      
+   }
 
 }

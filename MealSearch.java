@@ -47,6 +47,9 @@ public class MealSearch {
             Gson gson = new Gson();
             JsonObject json = gson.fromJson(jsonResponse1, JsonObject.class);
             
+            System.out.println((json.meals[0]).strMeal);
+            System.out.println((json.meals[0]).strCategory);
+            System.out.println((json.meals[0]).strInstructions);
             // Access the "meals" array from the JSON object
             JsonArray mealsArray = json.getAsJsonArray("meals");
 

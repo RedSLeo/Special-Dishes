@@ -160,53 +160,7 @@ public class MoveLaterFXMLRecipeAppController
       
       updateChoice();
    }
-   
-   /** 
-      This method runs when the user clicks the first recipe displayed
-      on the left side. It updates the ingredients and recipe 
-      instructions displayed to that of the recipe that the user selected.
-   */
-   @FXML
-   protected void displayChoice2(ActionEvent event) 
-   {
-   
-   }
-   
-   /** 
-      This method runs when the user clicks the first recipe displayed
-      on the left side. It updates the ingredients and recipe 
-      instructions displayed to that of the recipe that the user selected.
-   */
-   @FXML
-   protected void displayChoice3(ActionEvent event) 
-   {
-   
-   }
-   
-   /** 
-      This method runs when the user clicks the first recipe displayed
-      on the left side. It updates the ingredients and recipe 
-      instructions displayed to that of the recipe that the user selected.
-   */
-   
-   @FXML
-   protected void displayChoice4(ActionEvent event) 
-   {
-   
-   }
-   
-   /** 
-      This method runs when the user clicks the first recipe displayed
-      on the left side. It updates the ingredients and recipe 
-      instructions displayed to that of the recipe that the user selected.
-   */
-    
-   @FXML
-   protected void displayChoice5(ActionEvent event) 
-   {
-   
-   }
-   
+      
    
    @FXML
    protected void handleMealChoiceRadioActionButton(ActionEvent event) 

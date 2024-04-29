@@ -55,22 +55,22 @@
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="button2" contentDisplay="TOP" layoutX="38.0" layoutY="184.0" mnemonicParsing="false" onAction="#displayChoice2" prefHeight="26.0" prefWidth="122.0" text="Button" textAlignment="CENTER">
+                        <Button fx:id="button2" contentDisplay="TOP" layoutX="38.0" layoutY="184.0" mnemonicParsing="false" onAction="#displayChoice1" prefHeight="26.0" prefWidth="122.0" text="Button" textAlignment="CENTER">
                            <VBox.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="button3" contentDisplay="TOP" layoutX="38.0" layoutY="217.0" mnemonicParsing="false" onAction="#displayChoice3" prefHeight="26.0" prefWidth="122.0" text="Button" textAlignment="CENTER">
+                        <Button fx:id="button3" contentDisplay="TOP" layoutX="38.0" layoutY="217.0" mnemonicParsing="false" onAction="#displayChoice1" prefHeight="26.0" prefWidth="122.0" text="Button" textAlignment="CENTER">
                            <VBox.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="button4" contentDisplay="TOP" layoutX="38.0" layoutY="232.0" mnemonicParsing="false" onAction="#displayChoice4" prefHeight="26.0" prefWidth="122.0" text="Button" textAlignment="CENTER">
+                        <Button fx:id="button4" contentDisplay="TOP" layoutX="38.0" layoutY="232.0" mnemonicParsing="false" onAction="#displayChoice1" prefHeight="26.0" prefWidth="122.0" text="Button" textAlignment="CENTER">
                            <VBox.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="button5" contentDisplay="TOP" layoutX="38.0" layoutY="236.0" mnemonicParsing="false" onAction="#displayChoice5" prefHeight="26.0" prefWidth="122.0" text="Button" textAlignment="CENTER">
+                        <Button fx:id="button5" contentDisplay="TOP" layoutX="38.0" layoutY="236.0" mnemonicParsing="false" onAction="#displayChoice1" prefHeight="26.0" prefWidth="122.0" text="Button" textAlignment="CENTER">
                            <VBox.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </VBox.margin>
@@ -91,7 +91,7 @@
                <right>
                   <VBox prefHeight="374.0" prefWidth="263.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Label fx:id="recipeLabel" text="Label" />
+                        <Label fx:id="recipeLabel" text="Label" textOverrun="CLIP" wrapText="true" />
                      </children>
                   </VBox>
                </right>
@@ -130,7 +130,6 @@
                               </RadioButton>
                            </children>
                         </HBox>
-                        <Button fx:id="searchButton" alignment="CENTER" contentDisplay="CENTER" layoutX="250.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#beefChoice" text="Search Option!" textAlignment="CENTER" />
                      </children>
                      <BorderPane.margin>
                         <Insets top="20.0" />

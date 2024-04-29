@@ -16,48 +16,7 @@ import javafx.util.*;
 public class MealSearch extends Application {
     public static void main(String[] args) {
         launch(args);
-        try {
-            // This is the FIRST meal
-            // mealName varirable is not being used
-            // String mealName = "Arrabiata";
-            String apiURL1 = "http://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata";
-
-            URL url1 = new URL(apiURL1);
-            HttpURLConnection conn1 = (HttpURLConnection) url1.openConnection();
-            conn1.setRequestMethod("GET");
-
-            /*
-             * Verifies if redirection is needed because without it it would return as an HTML format and throw an error,
-             * therefore to avoid that it goes ahead and retrieves the new URL from the response
-             * headers and opens a connection to the new URL
-             */
-            if (conn1.getResponseCode() == HttpURLConnection.HTTP_MOVED_PERM || conn1.getResponseCode() == HttpURLConnection.HTTP_MOVED_TEMP) {
-                String newUrl = conn1.getHeaderField("Location");
-                conn1 = (HttpURLConnection) new URL(newUrl).openConnection();
-                conn1.setRequestMethod("GET");
-            }
-
-            BufferedReader reader1 = new BufferedReader(new InputStreamReader(conn1.getInputStream()));
-            StringBuilder response1 = new StringBuilder();
-            String line1;
-            while ((line1 = reader1.readLine()) != null) {
-                response1.append(line1);
-            }
-            reader1.close();
-
-            /*
-             * Reads the response from the connection and stores it as a 'String' and then prints out the JSON response to the console
-             */
-            String jsonResponse1 = response1.toString();
-            System.out.println(jsonResponse1);
-
-            // Not being used (Figure this part out later, even though it works without it)
-            Gson gson = new Gson();
-            JsonObject json = gson.fromJson(jsonResponse1, JsonObject.class);
-            
-            System.out.println((json.meals[0]).strMeal);
-            System.out.println((json.meals[0]).strCategory);
-            System.out.println((json.meals[0]).strInstructions);
+        
             // Access the "meals" array from the JSON object
 //            JsonArray mealsArray = json.getAsJsonArray("meals");
 
@@ -297,10 +256,7 @@ public class MealSearch extends Application {
 
 */
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
+         
     }
     public void start(Stage stage) throws Exception
    {

@@ -41,7 +41,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MoveLaterFXMLRecipeAppController">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="373.0" prefWidth="635.0" VBox.vgrow="ALWAYS">
          <children>
@@ -104,22 +104,22 @@
                                     <Insets right="10.0" />
                                  </padding>
                               </Label>
-                              <RadioButton fx:id="vegButton" mnemonicParsing="false" onAction="#vegChoice" text="Vegetarian">
+                              <RadioButton fx:id="vegButton" mnemonicParsing="false" onAction="#handleMealChoiceRadioActionButton" text="Vegetarian">
                                  <HBox.margin>
                                     <Insets right="10.0" />
                                  </HBox.margin>
                               </RadioButton>
-                              <RadioButton fx:id="chickButton" mnemonicParsing="false" onAction="#chickChoice" text="Chicken">
+                              <RadioButton fx:id="chickButton" mnemonicParsing="false" onAction="#handleMealChoiceRadioActionButton" text="Chicken">
                                  <HBox.margin>
                                     <Insets right="10.0" />
                                  </HBox.margin>
                               </RadioButton>
-                              <RadioButton fx:id="beefButton" mnemonicParsing="false" onAction="#beefChoice" text="Beef">
+                              <RadioButton fx:id="beefButton" mnemonicParsing="false" onAction="#handleMealChoiceRadioActionButton" text="Beef">
                                  <HBox.margin>
                                     <Insets right="10.0" />
                                  </HBox.margin>
                               </RadioButton>
-                              <RadioButton fx:id="porkButton" mnemonicParsing="false" onAction="#porkChoice" text="Pork">
+                              <RadioButton fx:id="porkButton" mnemonicParsing="false" onAction="#handleMealChoiceRadioActionButton" text="Pork">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>

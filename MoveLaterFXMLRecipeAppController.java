@@ -80,6 +80,9 @@ public class MoveLaterFXMLRecipeAppController
    
    protected static final String MEAL_TYPE = "meal_type_key";
    
+   private Button sourceButton;
+   
+   protected JsonObject json;
    
    
    /**
@@ -154,7 +157,7 @@ public class MoveLaterFXMLRecipeAppController
    @FXML
    protected void displayChoice1(ActionEvent event) 
    {
-      Button sourceButton = (Button) event.getSource();
+      sourceButton = (Button) event.getSource();
       
       recipeChoice = (sourceButton.getText());
       
@@ -179,6 +182,31 @@ public class MoveLaterFXMLRecipeAppController
       p.put(MEAL_TYPE, this.mealChoice.toString() );
    }
    
+   protected void setIngredients()
+   {
+      String ingredientList = ( json.meals[0].strMeasure1 + " " + json.meals[0].strIngredient1 + "\n"
+                              + json.meals[0].strMeasure2 + " " + json.meals[0].strIngredient2 + "\n"
+                              + json.meals[0].strMeasure3 + " " + json.meals[0].strIngredient3 + "\n"
+                              + json.meals[0].strMeasure4 + " " + json.meals[0].strIngredient4 + "\n"
+                              + json.meals[0].strMeasure5 + " " + json.meals[0].strIngredient5 + "\n"
+                              + json.meals[0].strMeasure6 + " " + json.meals[0].strIngredient6 + "\n"
+                              + json.meals[0].strMeasure7 + " " + json.meals[0].strIngredient7 + "\n"
+                              + json.meals[0].strMeasure8 + " " + json.meals[0].strIngredient8 + "\n"
+                              + json.meals[0].strMeasure9 + " " + json.meals[0].strIngredient9 + "\n"
+                              + json.meals[0].strMeasure10 + " " + json.meals[0].strIngredient10 + "\n"
+                              + json.meals[0].strMeasure11 + " " + json.meals[0].strIngredient11 + "\n"
+                              + json.meals[0].strMeasure12 + " " + json.meals[0].strIngredient12 + "\n"
+                              + json.meals[0].strMeasure13 + " " + json.meals[0].strIngredient13 + "\n"
+                              + json.meals[0].strMeasure14 + " " + json.meals[0].strIngredient14 + "\n"
+                              + json.meals[0].strMeasure15 + " " + json.meals[0].strIngredient15 + "\n"
+                              + json.meals[0].strMeasure16 + " " + json.meals[0].strIngredient16 + "\n"
+                              + json.meals[0].strMeasure17 + " " + json.meals[0].strIngredient17 + "\n"
+                              + json.meals[0].strMeasure18 + " " + json.meals[0].strIngredient18 + "\n"
+                              + json.meals[0].strMeasure19 + " " + json.meals[0].strIngredient19 + "\n"
+                              + json.meals[0].strMeasure20 + " " + json.meals[0].strIngredient20 + "\n" );
+      ingredientLabel.setText(ingredientList);
+   }
+   
    protected void updateChoice()
    {
       try {
@@ -188,7 +216,8 @@ public class MoveLaterFXMLRecipeAppController
             //String apiURL1 = ("https://www.themealdb.com/api/json/v1/1/filter.php?c=" + recipeChoice);
             
             // This needs to be fixed, to use recipeChoice or some other String (determined by some kind of conditional) to call the right recipe
-            String apiURL1 = ("http://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata");
+            String formattedChoice = recipeChoice.replace(" ", "_");
+            String apiURL1 = ("http://www.themealdb.com/api/json/v1/1/search.php?s=" + formattedChoice);
 
             URL url1 = new URL(apiURL1);
             HttpURLConnection conn1 = (HttpURLConnection) url1.openConnection();
@@ -221,9 +250,10 @@ public class MoveLaterFXMLRecipeAppController
 
             // Not being used (Figure this part out later, even though it works without it)
             Gson gson = new Gson();
-            JsonObject json = gson.fromJson(jsonResponse1, JsonObject.class);
+            json = gson.fromJson(jsonResponse1, JsonObject.class);
             
             recipeLabel.setText((json.meals[0]).strInstructions);
+            setIngredients();
             System.out.println((json.meals[0]).strInstructions);
       }
    

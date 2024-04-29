@@ -93,6 +93,7 @@ public class MoveLaterFXMLRecipeAppController
    protected void chickChoice() 
    {
       this.mealChoice = MealChoice.CHICKEN;
+      //MealSearch.mealsArray.
    }
    
    /**
@@ -102,7 +103,7 @@ public class MoveLaterFXMLRecipeAppController
    @FXML
    protected void porkChoice() 
    {
-      this.mealChoice = MealChoice.PORK;
+      this.mealChoice = MealChoice.PORK;  
      
    }   
    @FXML

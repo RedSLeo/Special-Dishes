@@ -1,8 +1,19 @@
+/**
+   This class represents a meal or recipe.
+*/
+
 public class Meal
 {
+   /** The name of the recipe. */
    public String strMeal;
+   
+   /** The category of meal the recipe belongs to. Currently unused in the program. */
    public String strCategory;
+   
+   /** The recipe instructions. */
    public String strInstructions;
+   
+   // Each variable holds the name of each ingredient of the recipe.
    public String strIngredient1 = "";
    public String strIngredient2 = "";
    public String strIngredient3 = "";
@@ -23,6 +34,8 @@ public class Meal
    public String strIngredient18 = "";
    public String strIngredient19 = "";
    public String strIngredient20 = "";
+   
+   // Each variable holds the quantity of the corresponding ingredient.
    public String strMeasure1 = "";
    public String strMeasure2 = "";
    public String strMeasure3 = "";

@@ -153,9 +153,10 @@ public class MoveLaterFXMLRecipeAppController implements Initializable
    }
    
    /** 
-      This method runs when the user clicks the recipe displayed
+      This method runs when the user clicks one of the recipe buttons
       on the left side. It updates the ingredients and recipe 
       instructions displayed to that of the recipe that the user selected.
+      If nothing's selected, then it will show an alert.
    */
    
    @FXML
@@ -179,6 +180,12 @@ public class MoveLaterFXMLRecipeAppController implements Initializable
       
    }
       
+   /** 
+      This method runs when the user clicks one of the radio buttons
+      to select a type of meal. It will call the appropriate method
+      to change the recipes displayed and change the value of mealChoice,
+      then save the new preference.
+   */
    
    @FXML
    protected void handleMealChoiceRadioActionButton(ActionEvent event) 
@@ -196,6 +203,11 @@ public class MoveLaterFXMLRecipeAppController implements Initializable
       Preferences p = Preferences.userNodeForPackage(MoveLaterFXMLRecipeAppController.class);
       p.put(MEAL_TYPE, this.mealChoice.toString() );
    }
+   
+   /**
+      This method concatenates a String that holds the list of ingredients
+      of the recipe and their measurements, then displays it in the app. 
+   */
    
    protected void setIngredients()
    {
@@ -222,15 +234,16 @@ public class MoveLaterFXMLRecipeAppController implements Initializable
       ingredientLabel.setText(ingredientList);
    }
    
+   /**
+      This method creates the correct API call for the recipe selected,
+      then calls the API. It reads its response and parses it to create
+      the recipe. It then displays the recipe's information in the app.
+   */
    protected void updateChoice()
    {
       try {
-            // This is the FIRST meal
-            // mealName varirable is not being used
-            // String mealName = "Arrabiata";
-            //String apiURL1 = ("https://www.themealdb.com/api/json/v1/1/filter.php?c=" + recipeChoice);
             
-            // This needs to be fixed, to use recipeChoice or some other String (determined by some kind of conditional) to call the right recipe
+            // Creates the right String to call the API with
             String formattedChoice = recipeChoice.replace(" ", "_");
             String apiURL1 = ("http://www.themealdb.com/api/json/v1/1/search.php?s=" + formattedChoice);
 
@@ -263,7 +276,7 @@ public class MoveLaterFXMLRecipeAppController implements Initializable
             String jsonResponse1 = response1.toString();
             System.out.println(jsonResponse1);
 
-            // Not being used (Figure this part out later, even though it works without it)
+            // Creates POJO from JSON data using GSON
             try
             {
                Gson gson = new Gson();
@@ -285,6 +298,11 @@ public class MoveLaterFXMLRecipeAppController implements Initializable
    }
 
    @Override
+   /** 
+      This method runs when the app first opens. It retrieves the user's
+      preference and sets the selected meal type to the right one.
+   */
+   
    public void initialize(URL location, ResourceBundle resources) 
    {
 

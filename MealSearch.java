@@ -257,8 +257,16 @@ public class MealSearch extends Application {
 */
 
          
-    }
-    public void start(Stage stage) throws Exception
+   }
+   
+   /**
+      This method is called when the app is started and ready to run.
+      It is the entry point for this app. It overrides the start method
+      of the Application class.
+   */
+   
+   @Override
+   public void start(Stage stage) throws Exception
    {
       // Load the GUI from FXML built in Scene Builder
       Parent root = FXMLLoader.load(getClass().getResource("RecipeAppView.fxml"));    
@@ -268,8 +276,14 @@ public class MealSearch extends Application {
       stage.show();
    }
    
+   /** 
+      This method is called when the application is stopped. 
+      It overrides the stop method of the Application class.
+   */
+   
    @Override
-   public void stop() {
+   public void stop() 
+   {
       System.out.println("Stop is called in Application class");
    }
 

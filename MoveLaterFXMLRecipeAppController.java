@@ -5,6 +5,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.*;
 import java.util.prefs.Preferences;
+import java.util.ResourceBundle;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.io.BufferedReader;
@@ -17,10 +18,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.util.*;
 import javafx.scene.control.Alert.AlertType;
+import javafx.fxml.Initializable;
 
-public class MoveLaterFXMLRecipeAppController
+public class MoveLaterFXMLRecipeAppController implements Initializable
 {
-   //private HttpClient client;
    
    @FXML
    /** The first recipe button. */
@@ -72,16 +73,20 @@ public class MoveLaterFXMLRecipeAppController
       
    /** A enum that keeps track of the user's choice for type of meal. Not sure if I'm going to keep this, depends on if we hardcode the buttons. */
    private enum MealChoice { VEGETARIAN, CHICKEN, BEEF, PORK };
+   
+   /** Keeps track of which meal choice the user has selected. */
    private MealChoice mealChoice;
    
+   /** A String representing the recipe the user has chosen. */
    private String recipeChoice;
    
-   protected static final String MEAL_TYPE = "meal_type_key";
+   /** Used as the key to persist the user's choice in type of meal in preferences. */
+   public static final String MEAL_TYPE = "meal_type_key";
    
    /** Keeps track of which button has just been pressed. */
    private Button sourceButton;
    
-   protected JsonObject json;
+   private JsonObject json;
    
    
    /**
@@ -259,11 +264,19 @@ public class MoveLaterFXMLRecipeAppController
             System.out.println(jsonResponse1);
 
             // Not being used (Figure this part out later, even though it works without it)
-            Gson gson = new Gson();
-            json = gson.fromJson(jsonResponse1, JsonObject.class);
+            try
+            {
+               Gson gson = new Gson();
+               json = gson.fromJson(jsonResponse1, JsonObject.class);
+               recipeLabel.setText((json.meals[0]).strInstructions);
+               setIngredients();
+            }
+            catch (Exception e)
+            {
+               System.out.println("Could not parse JSON");
+               return;
+            }
             
-            recipeLabel.setText((json.meals[0]).strInstructions);
-            setIngredients();
       }
    
       catch (Exception e) {
@@ -271,4 +284,30 @@ public class MoveLaterFXMLRecipeAppController
       }
    }
 
+   @Override
+   public void initialize(URL location, ResourceBundle resources) 
+   {
+
+      // Read which meal choice to use from preferences
+      // App currently defaults to vegetarian
+      Preferences p = Preferences.userNodeForPackage(MoveLaterFXMLRecipeAppController.class);
+      this.mealChoice = MealChoice.valueOf( p.get(MEAL_TYPE, MealChoice.VEGETARIAN.toString() ) );
+      
+      if(this.mealChoice == MealChoice.VEGETARIAN)
+      {
+         this.vegButton.setSelected(true);
+      }
+      else if(this.mealChoice == MealChoice.CHICKEN)
+      {
+         this.chickButton.setSelected(true);
+      }
+      else if(this.mealChoice == MealChoice.BEEF)
+      {
+         this.beefButton.setSelected(true);
+      }
+      else 
+      {
+         this.porkButton.setSelected(true);
+      }
+   }
 }

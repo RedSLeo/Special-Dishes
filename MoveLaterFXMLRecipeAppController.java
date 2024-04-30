@@ -3,6 +3,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.*;
 import java.util.prefs.Preferences;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -15,6 +16,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.util.*;
+import javafx.scene.control.Alert.AlertType;
 
 public class MoveLaterFXMLRecipeAppController
 {
@@ -67,11 +69,7 @@ public class MoveLaterFXMLRecipeAppController
    /** Where the instructions of the recipe will be displayed. */
    @FXML
    private Label recipeLabel;
-   
-   /** A button that, when pressed, will update the available recipes displayed for that type of meal.*/
-   @FXML
-   private Button searchButton;
-   
+      
    /** A enum that keeps track of the user's choice for type of meal. Not sure if I'm going to keep this, depends on if we hardcode the buttons. */
    private enum MealChoice { VEGETARIAN, CHICKEN, BEEF, PORK };
    private MealChoice mealChoice;
@@ -80,6 +78,7 @@ public class MoveLaterFXMLRecipeAppController
    
    protected static final String MEAL_TYPE = "meal_type_key";
    
+   /** Keeps track of which button has just been pressed. */
    private Button sourceButton;
    
    protected JsonObject json;
@@ -157,11 +156,22 @@ public class MoveLaterFXMLRecipeAppController
    @FXML
    protected void displayChoice1(ActionEvent event) 
    {
-      sourceButton = (Button) event.getSource();
+      if (beefButton.isSelected() || chickButton.isSelected() ||
+         vegButton.isSelected() || porkButton.isSelected())
+         {
+         sourceButton = (Button) event.getSource();
       
-      recipeChoice = (sourceButton.getText());
+         recipeChoice = (sourceButton.getText());
       
-      updateChoice();
+         updateChoice();
+         }
+      else
+      {
+         Alert a1 = new Alert(AlertType.NONE, "Please select a dish category!", ButtonType.OK);
+         a1.show();
+      }
+         
+      
    }
       
    
@@ -254,7 +264,6 @@ public class MoveLaterFXMLRecipeAppController
             
             recipeLabel.setText((json.meals[0]).strInstructions);
             setIngredients();
-            System.out.println((json.meals[0]).strInstructions);
       }
    
       catch (Exception e) {

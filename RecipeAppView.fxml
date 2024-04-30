@@ -124,7 +124,7 @@
                   </VBox>
                </top>
                <right>
-                  <ScrollPane hbarPolicy="ALWAYS" pannable="true" prefWidth="257.0" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
+                  <ScrollPane hbarPolicy="ALWAYS" pannable="true" prefHeight="448.0" prefWidth="302.0" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0">
                            <children>
@@ -138,7 +138,7 @@
                   </ScrollPane>
                </right>
                <center>
-                  <ScrollPane hbarPolicy="ALWAYS" pannable="true" prefHeight="200.0" prefWidth="200.0" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
+                  <ScrollPane hbarPolicy="ALWAYS" pannable="true" prefHeight="448.0" prefWidth="217.0" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0">
                            <children>

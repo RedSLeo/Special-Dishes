@@ -36,6 +36,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -49,31 +50,57 @@
                <left>
                   <VBox alignment="CENTER" prefHeight="374.0" prefWidth="178.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Button fx:id="button1" contentDisplay="TOP" mnemonicParsing="false" onAction="#displayChoice1" prefHeight="26.0" prefWidth="122.0" text="Button" textAlignment="CENTER">
+                        <Button fx:id="button1" contentDisplay="TOP" mnemonicParsing="false" onAction="#displayChoice1" prefHeight="26.0" prefWidth="122.0" text="Beef Lo Mein" textAlignment="CENTER">
                            <VBox.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="button2" contentDisplay="TOP" layoutX="38.0" layoutY="184.0" mnemonicParsing="false" onAction="#displayChoice2" prefHeight="26.0" prefWidth="122.0" text="Button" textAlignment="CENTER">
+                        <Button fx:id="button2" contentDisplay="TOP" layoutX="38.0" layoutY="184.0" mnemonicParsing="false" onAction="#displayChoice2" prefHeight="26.0" prefWidth="122.0" text="Egyptian Fatteh" textAlignment="CENTER">
                            <VBox.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="button3" contentDisplay="TOP" layoutX="38.0" layoutY="217.0" mnemonicParsing="false" onAction="#displayChoice3" prefHeight="26.0" prefWidth="122.0" text="Button" textAlignment="CENTER">
+                        <Button fx:id="button3" contentDisplay="TOP" layoutX="38.0" layoutY="184.0" mnemonicParsing="false" onAction="#displayChoice3" prefHeight="26.0" prefWidth="122.0" text="Thai Green Curry" textAlignment="CENTER">
                            <VBox.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="button4" contentDisplay="TOP" layoutX="38.0" layoutY="232.0" mnemonicParsing="false" onAction="#displayChoice4" prefHeight="26.0" prefWidth="122.0" text="Button" textAlignment="CENTER">
+                        <Button fx:id="button4" contentDisplay="TOP" layoutX="38.0" layoutY="184.0" mnemonicParsing="false" onAction="#displayChoice4" prefHeight="26.0" prefWidth="122.0" text="Pad See Ew" textAlignment="CENTER">
                            <VBox.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="button5" contentDisplay="TOP" layoutX="38.0" layoutY="236.0" mnemonicParsing="false" onAction="#displayChoice5" prefHeight="26.0" prefWidth="122.0" text="Button" textAlignment="CENTER">
+                        <Button fx:id="button5" contentDisplay="TOP" layoutX="38.0" layoutY="184.0" mnemonicParsing="false" onAction="#displayChoice5" prefHeight="26.0" prefWidth="122.0" text="Sweet and Sour Pork" textAlignment="CENTER">
                            <VBox.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </VBox.margin>
                         </Button>
+                        <Button fx:id="button6" contentDisplay="TOP" layoutX="38.0" layoutY="184.0" mnemonicParsing="false" onAction="#displayChoice6" prefHeight="26.0" prefWidth="122.0" text="Japanese Katusdon" textAlignment="CENTER">
+                        <VBox.margin>
+                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                        </VBox.margin>
+                        </Button>
+                        <Button fx:id="button7" contentDisplay="TOP" layoutX="38.0" layoutY="184.0" mnemonicParsing="false" onAction="#displayChoice7" prefHeight="26.0" prefWidth="122.0" text="Vegetarian Casserole" textAlignment="CENTER">
+                        <VBox.margin>
+                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                        </VBox.margin>
+                        </Button>
+                        <Button fx:id="button8" contentDisplay="TOP" layoutX="38.0" layoutY="184.0" mnemonicParsing="false" onAction="#displayChoice8" prefHeight="26.0" prefWidth="122.0" text="Vegetarian Chilli" textAlignment="CENTER">
+                        <VBox.margin>
+                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                        </VBox.margin>
+                        </Button>
+                        <Button fx:id="button9" contentDisplay="TOP" layoutX="38.0" layoutY="184.0" mnemonicParsing="false" onAction="#displayChoice9" prefHeight="26.0" prefWidth="122.0" text="Honey Teriyaki Salmon" textAlignment="CENTER">
+                        <VBox.margin>
+                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                        </VBox.margin>
+                        </Button>
+                        <Button fx:id="button10" contentDisplay="TOP" layoutX="38.0" layoutY="184.0" mnemonicParsing="false" onAction="#displayChoice10" prefHeight="26.0" prefWidth="122.0" text="Fish Soup (Ukha)" textAlignment="CENTER">
+                        <VBox.margin>
+                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                        </VBox.margin>
+                        </Button>
+                        <!-- <Button fx:id="honeyTeriyakiSalmonButton" text="Honey Teriyaki Salmon" onAction="#honeyTeriyakiSalmon" /> -->
                      </children>
                      <BorderPane.margin>
                         <Insets />
@@ -90,7 +117,7 @@
                <right>
                   <VBox prefHeight="374.0" prefWidth="263.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Label fx:id="recipeLabel" text="Label" />
+                        <Label fx:id="recipeLabel" text="Label" textOverrun="CLIP" wrapText="true" />
                      </children>
                   </VBox>
                </right>
@@ -108,25 +135,33 @@
                                  <HBox.margin>
                                     <Insets right="10.0" />
                                  </HBox.margin>
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="toggleGroup1" />
+                                 </toggleGroup>
                               </RadioButton>
-                              <RadioButton fx:id="chickButton" mnemonicParsing="false" onAction="#handleMealChoiceRadioActionButton" text="Chicken">
+                              <RadioButton fx:id="chickButton" mnemonicParsing="false" onAction="#handleMealChoiceRadioActionButton" text="Chicken" toggleGroup="$toggleGroup1">
                                  <HBox.margin>
                                     <Insets right="10.0" />
                                  </HBox.margin>
                               </RadioButton>
-                              <RadioButton fx:id="beefButton" mnemonicParsing="false" onAction="#handleMealChoiceRadioActionButton" text="Beef">
+                              <RadioButton fx:id="beefButton" mnemonicParsing="false" onAction="#handleMealChoiceRadioActionButton" text="Beef" toggleGroup="$toggleGroup1">
                                  <HBox.margin>
                                     <Insets right="10.0" />
                                  </HBox.margin>
                               </RadioButton>
-                              <RadioButton fx:id="porkButton" mnemonicParsing="false" onAction="#handleMealChoiceRadioActionButton" text="Pork">
+                              <RadioButton fx:id="porkButton" mnemonicParsing="false" onAction="#handleMealChoiceRadioActionButton" text="Pork" toggleGroup="$toggleGroup1">
                                  <HBox.margin>
+                                    <Insets right="10.0"/>
+                                 </HBox.margin>
+                              </RadioButton>
+                              <RadioButton fx:id="seaButton" mnemonicParsing="false" onAction="#handleMealChoiceRadioActionButton" text="Seafood" toggleGroup="$toggleGroup1">
+                              <HBox.margin>
                                     <Insets />
-                                 </HBox.margin>
+                              </HBox.margin>
                               </RadioButton>
+                              <!-- <Button fx:id="button1" onAction="#honeyTeriyakiSalmon" text="Honey Teriyaki Salmon"/> -->
                            </children>
                         </HBox>
-                        <Button fx:id="searchButton" alignment="CENTER" contentDisplay="CENTER" layoutX="250.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#updateChoice" text="Search Option!" textAlignment="CENTER" />
                      </children>
                      <BorderPane.margin>
                         <Insets top="20.0" />

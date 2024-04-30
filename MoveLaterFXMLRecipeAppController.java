@@ -314,18 +314,22 @@ public class MoveLaterFXMLRecipeAppController implements Initializable
       if(this.mealChoice == MealChoice.VEGETARIAN)
       {
          this.vegButton.setSelected(true);
+         vegChoice();
       }
       else if(this.mealChoice == MealChoice.CHICKEN)
       {
          this.chickButton.setSelected(true);
+         chickChoice();
       }
       else if(this.mealChoice == MealChoice.BEEF)
       {
          this.beefButton.setSelected(true);
+         beefChoice();
       }
       else 
       {
          this.porkButton.setSelected(true);
+         porkChoice();
       }
    }
 }

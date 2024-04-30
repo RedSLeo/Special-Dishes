@@ -1,0 +1,20 @@
+.root
+{
+    -fx-font-size: 12pt;
+    -fx-font-family: "Georgia";
+    -fx-text-fill: rgb(249, 235, 222);
+    -fx-base: rgb(129, 88, 84);
+    -fx-background: rgb(249, 235, 222);
+}
+
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-radius: 0em;
+}
+.scroll-bar:horizontal .thumb, .scroll-bar:vertical .thumb 
+{
+    -fx-background-color: rgb(249, 235, 222);
+    -fx-background-radius: 5em;
+}

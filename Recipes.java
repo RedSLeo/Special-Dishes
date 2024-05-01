@@ -1,7 +1,7 @@
 /**
    This class represents a collection of recipes.
 */
-public class JsonObject
+public class Recipes
 {
    // An array of meals returned by the API.
    public Meal[] meals;

@@ -43,7 +43,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="655.0" prefWidth="951.0" stylesheets="@RecipeStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MoveLaterFXMLRecipeAppController">
+<VBox prefHeight="655.0" prefWidth="951.0" stylesheets="@RecipeStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXMLRecipeAppController">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>

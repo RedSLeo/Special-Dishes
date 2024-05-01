@@ -20,7 +20,7 @@ import javafx.util.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.fxml.Initializable;
 
-public class MoveLaterFXMLRecipeAppController implements Initializable
+public class FXMLRecipeAppController implements Initializable
 {
    
    @FXML
@@ -86,7 +86,7 @@ public class MoveLaterFXMLRecipeAppController implements Initializable
    /** Keeps track of which button has just been pressed. */
    private Button sourceButton;
    
-   private JsonObject json;
+   private Recipes recipes;
    
    
    /**
@@ -200,7 +200,7 @@ public class MoveLaterFXMLRecipeAppController implements Initializable
          porkChoice();
       
       // Save new meal preference
-      Preferences p = Preferences.userNodeForPackage(MoveLaterFXMLRecipeAppController.class);
+      Preferences p = Preferences.userNodeForPackage(FXMLRecipeAppController.class);
       p.put(MEAL_TYPE, this.mealChoice.toString() );
    }
    
@@ -211,26 +211,26 @@ public class MoveLaterFXMLRecipeAppController implements Initializable
    
    protected void setIngredients()
    {
-      String ingredientList = ( json.meals[0].strMeasure1 + " " + json.meals[0].strIngredient1 + "\n"
-                              + json.meals[0].strMeasure2 + " " + json.meals[0].strIngredient2 + "\n"
-                              + json.meals[0].strMeasure3 + " " + json.meals[0].strIngredient3 + "\n"
-                              + json.meals[0].strMeasure4 + " " + json.meals[0].strIngredient4 + "\n"
-                              + json.meals[0].strMeasure5 + " " + json.meals[0].strIngredient5 + "\n"
-                              + json.meals[0].strMeasure6 + " " + json.meals[0].strIngredient6 + "\n"
-                              + json.meals[0].strMeasure7 + " " + json.meals[0].strIngredient7 + "\n"
-                              + json.meals[0].strMeasure8 + " " + json.meals[0].strIngredient8 + "\n"
-                              + json.meals[0].strMeasure9 + " " + json.meals[0].strIngredient9 + "\n"
-                              + json.meals[0].strMeasure10 + " " + json.meals[0].strIngredient10 + "\n"
-                              + json.meals[0].strMeasure11 + " " + json.meals[0].strIngredient11 + "\n"
-                              + json.meals[0].strMeasure12 + " " + json.meals[0].strIngredient12 + "\n"
-                              + json.meals[0].strMeasure13 + " " + json.meals[0].strIngredient13 + "\n"
-                              + json.meals[0].strMeasure14 + " " + json.meals[0].strIngredient14 + "\n"
-                              + json.meals[0].strMeasure15 + " " + json.meals[0].strIngredient15 + "\n"
-                              + json.meals[0].strMeasure16 + " " + json.meals[0].strIngredient16 + "\n"
-                              + json.meals[0].strMeasure17 + " " + json.meals[0].strIngredient17 + "\n"
-                              + json.meals[0].strMeasure18 + " " + json.meals[0].strIngredient18 + "\n"
-                              + json.meals[0].strMeasure19 + " " + json.meals[0].strIngredient19 + "\n"
-                              + json.meals[0].strMeasure20 + " " + json.meals[0].strIngredient20 + "\n" );
+      String ingredientList = ( recipes.meals[0].strMeasure1 + " " + recipes.meals[0].strIngredient1 + "\n"
+                              + recipes.meals[0].strMeasure2 + " " + recipes.meals[0].strIngredient2 + "\n"
+                              + recipes.meals[0].strMeasure3 + " " + recipes.meals[0].strIngredient3 + "\n"
+                              + recipes.meals[0].strMeasure4 + " " + recipes.meals[0].strIngredient4 + "\n"
+                              + recipes.meals[0].strMeasure5 + " " + recipes.meals[0].strIngredient5 + "\n"
+                              + recipes.meals[0].strMeasure6 + " " + recipes.meals[0].strIngredient6 + "\n"
+                              + recipes.meals[0].strMeasure7 + " " + recipes.meals[0].strIngredient7 + "\n"
+                              + recipes.meals[0].strMeasure8 + " " + recipes.meals[0].strIngredient8 + "\n"
+                              + recipes.meals[0].strMeasure9 + " " + recipes.meals[0].strIngredient9 + "\n"
+                              + recipes.meals[0].strMeasure10 + " " + recipes.meals[0].strIngredient10 + "\n"
+                              + recipes.meals[0].strMeasure11 + " " + recipes.meals[0].strIngredient11 + "\n"
+                              + recipes.meals[0].strMeasure12 + " " + recipes.meals[0].strIngredient12 + "\n"
+                              + recipes.meals[0].strMeasure13 + " " + recipes.meals[0].strIngredient13 + "\n"
+                              + recipes.meals[0].strMeasure14 + " " + recipes.meals[0].strIngredient14 + "\n"
+                              + recipes.meals[0].strMeasure15 + " " + recipes.meals[0].strIngredient15 + "\n"
+                              + recipes.meals[0].strMeasure16 + " " + recipes.meals[0].strIngredient16 + "\n"
+                              + recipes.meals[0].strMeasure17 + " " + recipes.meals[0].strIngredient17 + "\n"
+                              + recipes.meals[0].strMeasure18 + " " + recipes.meals[0].strIngredient18 + "\n"
+                              + recipes.meals[0].strMeasure19 + " " + recipes.meals[0].strIngredient19 + "\n"
+                              + recipes.meals[0].strMeasure20 + " " + recipes.meals[0].strIngredient20 + "\n" );
       ingredientLabel.setText(ingredientList);
    }
    
@@ -280,8 +280,8 @@ public class MoveLaterFXMLRecipeAppController implements Initializable
             try
             {
                Gson gson = new Gson();
-               json = gson.fromJson(jsonResponse1, JsonObject.class);
-               recipeLabel.setText((json.meals[0]).strInstructions);
+               recipes = gson.fromJson(jsonResponse1, Recipes.class);
+               recipeLabel.setText((recipes.meals[0]).strInstructions);
                setIngredients();
             }
             catch (Exception e)
@@ -308,7 +308,7 @@ public class MoveLaterFXMLRecipeAppController implements Initializable
 
       // Read which meal choice to use from preferences
       // App currently defaults to vegetarian
-      Preferences p = Preferences.userNodeForPackage(MoveLaterFXMLRecipeAppController.class);
+      Preferences p = Preferences.userNodeForPackage(FXMLRecipeAppController.class);
       this.mealChoice = MealChoice.valueOf( p.get(MEAL_TYPE, MealChoice.VEGETARIAN.toString() ) );
       
       if(this.mealChoice == MealChoice.VEGETARIAN)
